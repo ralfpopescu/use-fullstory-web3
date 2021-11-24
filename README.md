@@ -34,7 +34,7 @@ const App = () => {
 };
 ```
 
-Now, we can answer all sorts of deep Digital Experience questions using FullStory's comprehensive tooling and the data we've collected!
+Now, we can answer all sorts of deep Digital Experience questions using FullStory's comprehensive tooling and the data we've collected! How many users have Ethereum providers? Who 
 
 <img width="682" alt="Screen Shot 2021-11-22 at 1 07 32 PM" src="https://user-images.githubusercontent.com/13985203/142913232-570632bf-21b0-45da-b8c1-95a0935748c8.png">
 

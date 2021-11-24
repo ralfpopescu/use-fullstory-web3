@@ -24,8 +24,8 @@ type DecodedParam = { name: string; value: string; type: string };
 const normalizeParams = (params: DecodedParam[]) => {
   return params
     .map((param, i) => ({
-      [`paramName${i}`]: param.name,
-      [`paramValue${i}`]: param.value,
+      [`paramName${i}_str`]: param.name,
+      [`paramValue${i}_str`]: param.value,
     }))
     .reduce((acc, curr) => ({ ...acc, ...curr }), {});
 };
@@ -55,10 +55,10 @@ export const useFullStoryWeb3 = ({ orgId, abi }: UseFullStoryWeb3Args) => {
                     const decodedDataParams = normalizeParams(decodedData.params);
                     const eventData = {
                       ...decodedDataParams,
-                      to: param.to,
-                      from: param.from,
-                      gas: param.gas,
-                      value: param.value,
+                      to_str: param.to,
+                      from_str: param.from,
+                      gas_str: param.gas,
+                      value_str: param.value,
                     };
                     FullStory.event(eventName, eventData);
                   }
