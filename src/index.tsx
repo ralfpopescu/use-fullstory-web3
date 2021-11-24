@@ -72,5 +72,5 @@ export const useFullStoryWeb3 = ({ orgId, abi }: UseFullStoryWeb3Args) => {
     } else {
       FullStory.setUserVars({ hasWeb3: false });
     }
-  });
+  }, [orgId, abi]);
 };
