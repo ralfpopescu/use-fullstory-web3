@@ -65,7 +65,7 @@ export const useFullStoryWeb3 = ({ orgId, abi }: UseFullStoryWeb3Args) => {
                 });
               }
             }
-          } catch (e: any) {
+          } catch (e) {
             console.log(e.message);
           }
         }
