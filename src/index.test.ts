@@ -31,12 +31,13 @@ describe("useFullStoryWeb3", () => {
 
     expect(mockRequest).toHaveBeenCalledWith(testCall);
     expect(mockedEvent).toHaveBeenCalledWith("isMpunkOwner", {
-      from: undefined,
-      gas: undefined,
-      paramName0: "sender",
-      paramValue0: "0x252f04e47150540c1dc63fa56f602e55eaa89547",
-      to: "0xe9fbedec2eafc89c926ded0bb7632ce221d7d2e6",
-      value: undefined,
+      from_str: undefined,
+      paramName0_str: "sender",
+      paramValue0_str: "0x252f04e47150540c1dc63fa56f602e55eaa89547",
+      to_str: "0xe9fbedec2eafc89c926ded0bb7632ce221d7d2e6",
+      value_real: 0,
+      gas_price_real: 0,
+      gas_real: 0,
     });
 
     act(() => {
@@ -45,12 +46,13 @@ describe("useFullStoryWeb3", () => {
 
     expect(mockRequest).toHaveBeenCalledWith(testTransaction);
     expect(mockedEvent).toHaveBeenCalledWith("mint", {
-      from: "0x252f04e47150540c1dc63fa56f602e55eaa89547",
-      gas: "0x2800e",
-      paramName0: "nonce",
-      paramValue0: "2192",
-      to: "0xe9fbedec2eafc89c926ded0bb7632ce221d7d2e6",
-      value: undefined,
+      from_str: "0x252f04e47150540c1dc63fa56f602e55eaa89547",
+      paramName0_str: "nonce",
+      paramValue0_str: "2192",
+      to_str: "0xe9fbedec2eafc89c926ded0bb7632ce221d7d2e6",
+      value_real: 0.6553600000430323,
+      gas_price_real: 0.002560000000000805,
+      gas_real: 0.023,
     });
   });
 });

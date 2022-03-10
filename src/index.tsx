@@ -2,8 +2,16 @@ import { useEffect } from "react";
 //@ts-ignore
 import abiDecoder from "abi-decoder";
 import * as FullStory from "@fullstory/browser";
+import { normalizeParams, formatEther } from "./util";
 
-type CallParam = { to: string; from: string; data: string; gas: string; value: string };
+type CallParam = {
+  to: string;
+  from: string;
+  data: string;
+  gas: string;
+  value: string;
+  gasPrice: string;
+};
 
 interface RequestArguments {
   method: string;
@@ -19,16 +27,6 @@ declare global {
 }
 
 window.ethereum = window.ethereum || {};
-
-type DecodedParam = { name: string; value: string; type: string };
-const normalizeParams = (params: DecodedParam[]) => {
-  return params
-    .map((param, i) => ({
-      [`paramName${i}_str`]: param.name,
-      [`paramValue${i}_str`]: param.value,
-    }))
-    .reduce((acc, curr) => ({ ...acc, ...curr }), {});
-};
 
 const significantEvents = ["eth_call", "eth_sendTransaction"];
 
@@ -50,6 +48,7 @@ export const useFullStoryWeb3 = ({ orgId, abi }: UseFullStoryWeb3Args) => {
               if (Array.isArray(args.params)) {
                 args.params.forEach((param) => {
                   if (param.data) {
+                    console.log(param);
                     const decodedData = abiDecoder.decodeMethod(param.data);
                     const eventName = decodedData.name || args.method;
                     const decodedDataParams = normalizeParams(decodedData.params);
@@ -57,15 +56,18 @@ export const useFullStoryWeb3 = ({ orgId, abi }: UseFullStoryWeb3Args) => {
                       ...decodedDataParams,
                       to_str: param.to,
                       from_str: param.from,
-                      gas_str: param.gas,
-                      value_str: param.value,
+                      gas_real: formatEther(param.gas),
+                      gas_price_real: formatEther(param.gasPrice),
+                      value_real: formatEther(param.value),
                     };
                     FullStory.event(eventName, eventData);
                   }
                 });
               }
             }
-          } catch (e) {}
+          } catch (e: any) {
+            console.log(e.message);
+          }
         }
         return request(args);
       };
