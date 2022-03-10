@@ -1,6 +1,6 @@
 {
   "name": "use-fullstory-web3",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Automatically record web3 events into FullStory",
   "author": "ralfpopescu",
   "license": "MIT",
@@ -30,7 +30,7 @@
     "@babel/runtime": "^7.3.1",
     "@rollup/plugin-babel": "^5.2.0",
     "@rollup/plugin-commonjs": "^15.0.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^5.0.2",
     "@rollup/plugin-url": "^5.0.1",
     "@testing-library/react-hooks": "^3.2.1",
