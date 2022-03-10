@@ -1,6 +1,6 @@
 {
   "name": "use-fullstory-web3",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Automatically record web3 events into FullStory",
   "author": "ralfpopescu",
   "license": "MIT",
